@@ -1,2 +1,0 @@
-/usr/bin/ar cr libplatform.a  CMakeFiles/platform.dir/src/platform.c.o
-/usr/bin/ranlib libplatform.a

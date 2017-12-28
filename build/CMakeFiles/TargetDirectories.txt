@@ -1,9 +1,0 @@
-/home/zr/Code/sample/build/source/cfgfile/CMakeFiles/cfgfile.dir
-/home/zr/Code/sample/build/source/ddc/CMakeFiles/ddc.dir
-/home/zr/Code/sample/build/source/dsa/CMakeFiles/dsa.dir
-/home/zr/Code/sample/build/source/log/CMakeFiles/log.dir
-/home/zr/Code/sample/build/source/platform/CMakeFiles/platform.dir
-/home/zr/Code/sample/build/source/main/CMakeFiles/sample.bin.dir
-/home/zr/Code/sample/build/source/socket/CMakeFiles/socket.dir
-/home/zr/Code/sample/build/source/thread/CMakeFiles/thread.dir
-/home/zr/Code/sample/build/source/utils/CMakeFiles/utils.dir

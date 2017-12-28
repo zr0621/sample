@@ -1,2 +1,0 @@
-/usr/bin/ar cr libcfgfile.a  CMakeFiles/cfgfile.dir/src/cfgfile.c.o CMakeFiles/cfgfile.dir/src/cjson_wrap.c.o CMakeFiles/cfgfile.dir/src/cjson.c.o
-/usr/bin/ranlib libcfgfile.a

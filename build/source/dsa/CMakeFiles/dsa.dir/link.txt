@@ -1,2 +1,0 @@
-/usr/bin/ar cr libdsa.a  CMakeFiles/dsa.dir/src/dsa.c.o CMakeFiles/dsa.dir/src/vector.c.o CMakeFiles/dsa.dir/src/dlist.c.o CMakeFiles/dsa.dir/src/queue.c.o
-/usr/bin/ranlib libdsa.a
