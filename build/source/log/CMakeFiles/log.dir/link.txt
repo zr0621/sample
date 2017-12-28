@@ -1,0 +1,2 @@
+/usr/bin/ar cr liblog.a  CMakeFiles/log.dir/src/log.c.o
+/usr/bin/ranlib liblog.a
