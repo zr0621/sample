@@ -23,6 +23,7 @@ void get_localtime(datetime_t * datetime)
 	//printf("datetime : %04d-%02d-%02d %02d:%02d:%02d\n", datetime->year,datetime->month,datetime->day,datetime->hour,datetime->minute,datetime->second);
 }
 
+//ms级
 uint64 get_exact_time()
 {
     struct timeval tv0;

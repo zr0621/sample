@@ -145,6 +145,8 @@ void get_localtime(datetime_t * datetime);
 
 uint64 get_exact_time();
 
+int64 prt_cost_time(char * str, int64 from);
+
 int int_comp (const void *a, const void *b);
 
 void int_sort(const int* ary, int cnt);
