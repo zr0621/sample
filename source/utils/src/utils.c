@@ -24,18 +24,18 @@ void get_localtime(datetime_t * datetime)
 }
 
 //ms级
-uint64 get_exact_time()
+uint64 get_ms_time()
 {
     struct timeval tv0;
     gettimeofday(&tv0, 0);
     return (uint64)(tv0.tv_sec*1000 + tv0.tv_usec/1000);
 }
 
-//from参数与get_exact_time配合使用，打印程序开销时间
+//from参数与get_exact_time配合使用，打印程序开销时间，深绿色
 int64 prt_cost_time(char * str, int64 from)
 {
-	int64 now = get_exact_time();
-	printf("%s %lld ms\n", str, now - from);
+	int64 now = get_ms_time();
+	printf("[0;32m""%s %lld ms\n""[0;39m", str, now - from);
 	return now;
 }
 

@@ -143,7 +143,7 @@ typedef struct
 
 void get_localtime(datetime_t * datetime);
 
-uint64 get_exact_time();
+uint64 get_ms_time();
 
 int64 prt_cost_time(char * str, int64 from);
 
