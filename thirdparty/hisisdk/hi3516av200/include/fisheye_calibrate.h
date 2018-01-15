@@ -26,6 +26,11 @@ extern "C"{
 
 #include "hi_comm_video.h"
 
+#define HI_ERR_FISHEYE_CALIBRATE_NULL_PTR          0xA0338011
+#define HI_ERR_FISHEYE_CALIBRATE_ILLEGAL_PARAM     0xA0338012
+#define HI_ERR_FISHEYE_CALIBRATE_NOT_SUPPORT       0xA0338013
+
+
 typedef enum hiFISHEYE_CALIBRATE_LEVEL_E
 {
 	LEVEL_0 = 0,	/*calibrate level 0*/

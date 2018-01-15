@@ -38,8 +38,6 @@
 
 #define MAX_MPP_MODULES HI_ID_BUTT
 
-#define VERSION_MAGIC	20170406
-
 #define MAX_MOD_NAME    16
 
 typedef enum hiMOD_NOTICE_ID_E

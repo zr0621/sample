@@ -158,6 +158,7 @@ HI_S32 HI_MPI_ISP_SetMode(ISP_DEV IspDev, const ISP_MODE_E enIspMode);
 HI_S32 HI_MPI_ISP_GetMode(ISP_DEV IspDev, ISP_MODE_E *penIspMode);
 
 HI_S32 HI_MPI_ISP_GetVDTimeOut(ISP_DEV IspDev, ISP_VD_INFO_S *pstIspVdInfo, HI_U32 u32MilliSec);
+HI_S32 HI_MPI_ISP_GetVDEndTimeOut(ISP_DEV IspDev, ISP_VD_INFO_S *pstIspVdInfo, HI_U32 u32MilliSec);
 
 HI_S32 HI_MPI_ISP_GetISPRegAttr(ISP_DEV IspDev, ISP_REG_ATTR_S * pstIspRegAttr);
 

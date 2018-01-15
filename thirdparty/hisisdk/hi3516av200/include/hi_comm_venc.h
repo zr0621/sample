@@ -87,7 +87,6 @@ typedef enum hiH265E_NALU_TYPE_E
      H265E_NALU_BUTT        
 } H265E_NALU_TYPE_E;
 
-#if 1
 /*the reference type of H264E slice*/
 typedef enum hiH264E_REFSLICE_TYPE_E
 {
@@ -96,7 +95,7 @@ typedef enum hiH264E_REFSLICE_TYPE_E
      H264E_REFSLICE_FOR_4X = 5,                     /*Reference slice for H264E_REF_MODE_4X*/
      H264E_REFSLICE_FOR_BUTT                        /* slice not for reference*/          
 } H264E_REFSLICE_TYPE_E;
-#endif
+
 /*the pack type of JPEGE*/
 typedef enum hiJPEGE_PACK_TYPE_E
 {
@@ -166,6 +165,7 @@ typedef struct hiVENC_STREAM_INFO_H264_S
     HI_U32 				u32UpdateAttrCnt;                       /*Number of times that channel attributes or parameters (including RC parameters) are set*/
 	HI_U32 				u32StartQp;								/*the start Qp of encoded frames*/
 	HI_U32 				u32MeanQp;								/*the mean Qp of encoded frames*/
+    HI_BOOL             bPSkip;
 }VENC_STREAM_INFO_H264_S;
 
 typedef struct hiVENC_STREAM_INFO_H265_S
@@ -184,6 +184,7 @@ typedef struct hiVENC_STREAM_INFO_H265_S
     HI_U32 				u32UpdateAttrCnt;                       /*Number of times that channel attributes or parameters (including RC parameters) are set*/
 	HI_U32 				u32StartQp;								/*the start Qp of encoded frames*/
 	HI_U32 				u32MeanQp;								/*the mean Qp of encoded frames*/
+    HI_BOOL             bPSkip;
 }VENC_STREAM_INFO_H265_S;
 
 
@@ -397,6 +398,18 @@ typedef struct hiVENC_CHN_STAT_S
 	
 }VENC_CHN_STAT_S;
 
+typedef struct hiVENC_CHN_STAT_EX_S
+{
+    HI_U32 u32LeftPics;                             /*left picture number */
+    HI_U32 u32LeftStreamBytes;                      /*left stream bytes*/
+    HI_U32 u32LeftStreamFrames;                     /*left stream frames*/
+    HI_U32 u32CurPacks;                             /*pack number of current frame*/
+    HI_U32 u32LeftRecvPics;                         /*Number of frames to be received. This member is valid after HI_MPI_VENC_StartRecvPicEx is called.*/
+    HI_U32 u32LeftEncPics;                          /*Number of frames to be encoded. This member is valid after HI_MPI_VENC_StartRecvPicEx is called.*/
+	
+    HI_BOOL bJpegSnapEnd;                           /*the end of Snap.*/
+}VENC_CHN_STAT_EX_S;
+
 
 
 typedef struct hiVENC_PARAM_H264_SLICE_SPLIT_S
@@ -561,6 +574,15 @@ typedef struct hiVENC_ROI_CFG_S
     RECT_S  stRect;                                /* Region of an ROI*/
 }VENC_ROI_CFG_S;
 
+/* ROI struct */
+typedef struct hiVENC_ROI_CFG_EX_S
+{
+    HI_U32  u32Index;                              /* Index of an ROI. The system supports indexes ranging from 0 to 7 */
+    HI_BOOL bEnable[3];                            /* Subscript of array   0: I Frame; 1: P/B Frame; 2: VI Frame; other params are the same. */
+    HI_BOOL bAbsQp[3];                             /* QP mode of an ROI.HI_FALSE: relative QP.HI_TURE: absolute QP.*/
+    HI_S32  s32Qp[3];                              /* QP value. */
+    RECT_S  stRect[3];                             /* Region of an ROI*/
+}VENC_ROI_CFG_EX_S;
 
 typedef struct hiVENC_ROIBG_FRAME_RATE_S
 {
@@ -757,27 +779,28 @@ typedef struct hiVENC_PARAM_MOD_JPEGE_S
 {
     HI_U32  u32OneStreamBuffer;
     HI_U32  u32JpegeMiniBufMode;
-    
 } VENC_PARAM_MOD_JPEGE_S;
 
 
 typedef struct hiVENC_PARAM_MOD_VENC_S
 {
     HI_U32 u32VencBufferCache; 
-	HI_U32 u32FrameBufRecycle;
+    HI_U32 u32FrameBufRecycle;
+    HI_U32 u32QuickSchedule;
+    HI_U32 u32JpegClearStreamBuf;
 } VENC_PARAM_MOD_VENC_S;
 
 
 typedef struct hiVENC_MODPARAM_S
 {
-  VENC_MODTYPE_E enVencModType;
-  union
-  {
-     VENC_PARAM_MOD_VENC_S  stVencModParam;
-     VENC_PARAM_MOD_H264E_S stH264eModParam;
-     VENC_PARAM_MOD_H265E_S stH265eModParam;
-     VENC_PARAM_MOD_JPEGE_S stJpegeModParam;  
-  };
+    VENC_MODTYPE_E enVencModType;
+    union
+    {
+        VENC_PARAM_MOD_VENC_S  stVencModParam;
+        VENC_PARAM_MOD_H264E_S stH264eModParam;
+        VENC_PARAM_MOD_H265E_S stH265eModParam;
+        VENC_PARAM_MOD_JPEGE_S stJpegeModParam;  
+    };
 } VENC_PARAM_MOD_S;
 
 typedef struct hiVENC_PARAM_ADVANCED_S
@@ -804,6 +827,14 @@ typedef struct hiVENC_SSE_CFG_S
     HI_BOOL bEnable;
     RECT_S  stRect;
 } VENC_SSE_CFG_S;
+
+typedef enum hiVENC_SCENE_MODE_E
+{
+	SCENE_0  = 0,              
+	SCENE_1  = 1,              
+	SCENE_2  = 2,              
+	SCENE_BUTT
+}VENC_SCENE_MODE_E;
 
 
 #ifdef __cplusplus

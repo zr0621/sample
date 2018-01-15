@@ -114,11 +114,12 @@ typedef struct hiNRS_PARAM_V3_S
   HI_U8  tf1_md_profile : 3; 
   HI_U8  tf2_md_profile : 3, tf_profile : 2; 
   
-  HI_U8  csf_strength, ctf_range;
+  HI_U8   csf_strength, ctf_range;
   HI_U16  ctf_strength : 6;
   HI_U16  tf1_moving   : 5;   
   HI_U16  tf2_moving   : 5; 
 } NRS_PARAM_V3_S;
+
 
 typedef struct hiSNAP_NRS_PARAM_S
 {
@@ -153,6 +154,60 @@ typedef struct hiNRS_PARAM_VIDEO_MANUAL_S
     NRS_PARAM_V3_S stNRSParam;
 } NRS_PARAM_VIDEO_MANUAL_S;
 
+
+typedef struct { HI_U8  IES, IET, IEB, _rB_; } tV19yIEy;
+
+typedef struct 
+{ 
+  HI_U8     SBF0 : 1;
+  HI_U8     SBF1 : 1, horPro : 2;
+  HI_U8     SBF2 : 2, verPro : 2, kProDD  : 3, SSLP   : 5, _rB_;
+  HI_U8     VRTO,     SFkRfw : 6, SFkType : 2, SFkBig : 1, _rb_ : 7;
+
+  HI_U16    STH[3], SBS[3], SDS[3];  
+
+} tV19ySFy;
+
+typedef struct
+{
+  HI_U16    MATH : 10,  MATE : 4,  MATW : 2;
+  HI_U8     MASW :  4,  MABW : 3,  MAXN : 1, _rB_;
+
+} tV19yMDy;
+
+typedef struct
+{
+  HI_U8     SFR[4], MTFR[4], TFR[4], STR, _rB_[3];
+  
+  HI_U16    MDDZ : 10, TFS  : 4,  TFT : 2;
+  HI_U16    SDZ  : 10, TSS  : 5, _rb_ : 1;
+
+} tV19yTFy;
+
+typedef struct
+{
+   HI_U8  SFC;
+   HI_U8  TFC : 6, _rsvd_b1_ : 2;
+   HI_U8  TPC : 6, _rsvd_b2_ : 2;
+   HI_U8  TRC;
+}  tV19yNRc;
+
+
+typedef struct hiVIDEO_NRX_PARAM_V1_S
+{
+    tV19yIEy  IEy;
+    tV19ySFy  SFy[4];
+    tV19yMDy  MDy[3];
+    tV19yTFy  TFy[4];
+    tV19yNRc  NRc;
+} VIDEO_NRX_PARAM_V1_S;
+
+
+typedef struct hiVIDEO_NRX_PARAM_V1_MANUAL_S
+{
+    VIDEO_NRX_PARAM_V1_S  stVideoNrXParamV1;
+} VIDEO_NRX_PARAM_V1_MANUAL_S;
+
 typedef enum hiVPSS_NR_OPT_TYPE_E
 {
     VPSS_NRS_MANUAL  = 0,    /*Manual mode*/
@@ -175,6 +230,15 @@ typedef struct hiNRS_PARAM_V4_S
     NRS_PARAM_VIDEO_AUTO_S      stVideoNrAuto; 		/*NRS param for auto video */
 } NRS_PARAM_V4_S;
 
+
+
+typedef struct hiNRX_PARAM_V1_S
+{
+    VPSS_NR_OPT_TYPE_E          enOptType;		        /*Adaptive NR */
+    VIDEO_NRX_PARAM_V1_MANUAL_S stVideoNrXV1Manual;	    /*NRX param for manual video */
+} NRX_PARAM_V1_S;
+
+
 typedef enum hiVPSS_NR_VER_E   
 {
     VPSS_NR_V1 = 1, 
@@ -183,6 +247,27 @@ typedef enum hiVPSS_NR_VER_E
     VPSS_NR_V4 = 4,
     VPSS_NR_BUTT  
 }VPSS_NR_VER_E;
+
+typedef enum hiVPSS_NR_INTF_E   
+{
+    VPSS_NR_INTF_S = 0, 
+    VPSS_NR_INTF_X = 1, 
+    VPSS_NR_INTF_B = 2,
+    VPSS_NR_INTF_BUTT  
+}VPSS_NR_INTF_E;
+
+
+typedef struct hiVPSS_GRP_NRX_PARAM_S
+{
+    VPSS_NR_VER_E enNRVer;
+    union
+    {
+        NRX_PARAM_V1_S stNRXParam_V1;                   /* interface X V1 for Hi3519V101  */
+    };
+    
+}VPSS_GRP_NRX_PARAM_S;
+
+
 
 
 typedef enum hiVPSS_NR_TYPE_E   
@@ -207,8 +292,8 @@ typedef struct hiVPSS_GRP_NRS_PARAM_S
     VPSS_NR_VER_E enNRVer;
     union
     {
-        NRS_PARAM_V3_S          stNRSParam_V3;   /* interface S V3 for Hi3519V101 video*/
-        NRS_PARAM_V4_S          stNRSParam_V4;   /* interface S V4 for Hi3519V101  video*/
+        NRS_PARAM_V3_S          stNRSParam_V3;   /* interface S V3 for Hi3519V101   video*/
+        NRS_PARAM_V4_S          stNRSParam_V4;   /* interface S V4 for Hi3519V101   video*/
     };    
 }VPSS_GRP_NRS_PARAM_S;
 
@@ -230,6 +315,7 @@ typedef struct hiVPSS_GRP_QUERY_S
     VPSS_NR_TYPE_E                  enNrType;           /*NR type*/
     VPSS_NR_VER_E                   enNRVer;            /*Running version of NR */
     VPSS_NR_OPT_TYPE_E              enOptType;		    /*NR Adaptive*/
+    VPSS_NR_INTF_E                  enNrIntfType;       /*NR Interface*/
 } VPSS_GRP_QUERY_S;
 
 

@@ -90,6 +90,9 @@ HI_S32 HI_MPI_VI_GetChnLuma(VI_CHN ViChn, VI_CHN_LUM_S *pstLuma);
 HI_S32 HI_MPI_VI_SetWDRAttr(VI_DEV ViDev, const VI_WDR_ATTR_S *pstWDRAttr);
 HI_S32 HI_MPI_VI_GetWDRAttr(VI_DEV ViDev, VI_WDR_ATTR_S *pstWDRAttr);
 
+HI_S32 HI_MPI_VI_SetVCNumber(VI_DEV ViDev, const VI_VC_NUMBER_S *pstVCNumber);
+HI_S32 HI_MPI_VI_GetVCNumber(VI_DEV ViDev, VI_VC_NUMBER_S *pstVCNumber);
+
 HI_S32 HI_MPI_VI_SetFisheyeDevConfig(VI_DEV ViDev, const FISHEYE_CONFIG_S *pstFisheyeConfig);
 HI_S32 HI_MPI_VI_GetFisheyeDevConfig(VI_DEV ViDev, FISHEYE_CONFIG_S *pstFisheyeConfig);
 

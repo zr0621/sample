@@ -230,6 +230,24 @@ HI_S32 HI_MPI_VGS_AddQuickCopyTask(VGS_HANDLE hHandle, VGS_TASK_ATTR_S * pstTask
 *****************************************************************************/
 HI_S32 HI_MPI_VGS_AddRevertTask(VGS_HANDLE hHandle, VGS_TASK_ATTR_S * pstTask, VGS_ADD_REVERT_S * pstAddRevert);
 
+/*****************************************************************************
+ Prototype    : HI_MPI_VGS_AddRotateTask
+ Description  : add Rotate tasks into a job
+ Input        : VGS_HANDLE  hHandle   
+ Output       : None
+ Return Value : 
+ Calls        : 
+ Called By    : 
+</$> 
+  History        :
+  1.Date         : 2017/07/07
+    Author       : 
+    Modification : Created function
+<$/>
+*****************************************************************************/
+
+HI_S32 HI_MPI_VGS_AddRotateTask(VGS_HANDLE hHandle,VGS_TASK_ATTR_S *pstTask, const ROTATE_E enRotate);
+
 #ifdef __cplusplus
 #if __cplusplus
 }

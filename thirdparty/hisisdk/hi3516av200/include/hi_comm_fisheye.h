@@ -122,6 +122,16 @@ typedef struct hiFISHEYE_CYLIND_ATTR_S
     HI_S32 s32Ratio;                /* Distortion ratio.*/
 } FISHEYE_CYLIND_ATTR_S;
 
+typedef struct hiFISHEYE_CYLIND_ATTR_EX_S
+{
+    FISHEYE_CYLIND_ATTR_S   stCylindAttr;   /*Cylind Nomal Attr*/
+    HI_S32                  s32FanStrength; /*Strength coefficient of fan correction*/
+} FISHEYE_CYLIND_ATTR_EX_S;
+
+typedef struct hiFISHEYE_PMF_ATTR_S
+{
+	HI_S32      				as32PMFCoef[FISHEYE_PMFCOEF_NUM];
+}FISHEYE_PMF_ATTR_S;
 
 typedef struct hiFISHEYE_JOB_CONFIG_S
 {    

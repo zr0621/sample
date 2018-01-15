@@ -43,6 +43,8 @@ HI_S32  HI_MPI_SYS_GetBindbyDest(MPP_CHN_S* pstDestChn, MPP_CHN_S* pstSrcChn);
 
 HI_S32 HI_MPI_SYS_GetVersion(MPP_VERSION_S* pstVersion);
 
+HI_S32 HI_MPI_SYS_GetChipId(HI_U32 *pu32ChipId);
+
 /*
 ** u64Base is the global PTS of the system.
 ** ADVICE:

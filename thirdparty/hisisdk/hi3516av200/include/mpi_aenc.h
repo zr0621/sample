@@ -45,6 +45,9 @@ HI_S32 HI_MPI_AENC_UnRegisterEncoder(HI_S32 s32Handle);
 HI_S32 HI_MPI_AENC_SaveFile(AENC_CHN AeChn, AUDIO_SAVE_FILE_INFO_S *pstSaveFileInfo);
 HI_S32 HI_MPI_AENC_QueryFileStatus(AENC_CHN AeChn, AUDIO_FILE_STATUS_S* pstFileStatus);
 
+HI_S32 HI_MPI_AENC_GetStreamBufInfo(AENC_CHN AeChn, HI_U32 *pu32PhysAddr, HI_U32 *pu32Size);
+
+
 #ifdef __cplusplus
 #if __cplusplus
 }

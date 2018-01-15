@@ -42,6 +42,8 @@ extern "C"
 #define VIU_MAX_USER_FRAME_DEPTH 8
 #define VIU_DEV_COMP_MASK_NUM         2
 #define VIU_DEV_AD_CHN_NUM            4
+#define VIU_DEV_VC_NUM                4
+#define VIU_DEV_MAX_VC_ID             0xF
 
 #define VIU_CSC_IDC_NUM               3
 #define VIU_CSC_ODC_NUM               3
@@ -154,7 +156,7 @@ typedef enum hiVI_DATA_YUV_SEQ_E
     VI_INPUT_DATA_UVUV,
 
    /* The input sequence for yuv */
-    VI_INPUT_DATA_UYVY = 0,
+    VI_INPUT_DATA_UYVY,
     VI_INPUT_DATA_VYUY,
     VI_INPUT_DATA_YUYV,
     VI_INPUT_DATA_YVYU,
@@ -573,6 +575,11 @@ typedef struct hiVI_ISP_WDR_ATTR_S
     HI_BOOL bCompress;
 }VI_WDR_ATTR_S;
 
+typedef struct hiVI_VC_NUMBER_S
+{
+    HI_U32 au32VCNumber[VIU_DEV_VC_NUM];
+}VI_VC_NUMBER_S;
+
 typedef enum hiVI_DUMP_TYPE_E
 {
     VI_DUMP_TYPE_RAW   = 0,
@@ -588,6 +595,7 @@ typedef enum hiVI_DUMP_SEL_E
 	VI_DUMP_SEL_BAS    = 1,  
 	VI_DUMP_SEL_BUTT
 }VI_DUMP_SEL_E;
+
 typedef struct hiVI_DUMP_ATTR_S
 {
     VI_DUMP_TYPE_E enDumpType;
@@ -638,7 +646,7 @@ typedef struct hiVI_DIS_CONFIG_S
 	VI_DIS_CAMERA_MODE_E    enCameraMode;				/* DIS Camera mode */
 	VI_DIS_MOTION_TYPE_E    enMotionType;				/* DIS Motion Type*/
 	HI_U32  				u32FixLevel;				/* Level of how strong the screen is fixated. range:[0~7] */	
-	HI_U32  				u32RollingShutterCoef;		/* Rolling shutter distortion correction coefficient. range:[0~100]*/
+	HI_S32  				s32RollingShutterCoef;		/* Rolling shutter distortion correction coefficient. range:[-100~100]*/
 	HI_U32					u32BufNum;					/* Buf num for DIS ,range:[5~8]*/
 	HI_U32					u32CropRatio;				/* crop ratio of output image,[50~98]*/
 	HI_S32					s32FrameRate;				/* the output framerate,[1~120]*/
@@ -682,7 +690,7 @@ typedef struct hiVI_MOD_PARAM_S
 typedef struct hiVI_SNAP_NORMAL_ATTR_S
 {
     /* -------- statical attrs -------- */
-    HI_U32  u32FrameDepth;   /* buffer depth, must great than 2 */
+    HI_U32  u32FrameDepth;   /* buffer depth, range:[2,8] */
     HI_S32  s32SrcFrameRate; /* for raw frame rate control */
     HI_S32  s32DstFrameRate;
     HI_BOOL bZSL;
@@ -696,12 +704,12 @@ typedef struct hiVI_SNAP_NORMAL_ATTR_S
 typedef struct hiVI_SNAP_HDR_ATTR_S
 {
     /* -------- statical attrs -------- */
-    HI_U32  u32FrameDepth;  /* buffer depth */
+    HI_U32  u32FrameDepth;  /* buffer depth, range:[2,8]*/
 }VI_SNAP_PRO_ATTR_S;
 
 typedef struct hiVI_SNAP_USER_ATTR_S
 {
-    HI_U32  u32FrameDepth;   /* buffer depth, must great than 2 */
+    HI_U32  u32FrameDepth;   /* buffer depth, range:[1,8] */
     HI_S32  s32SrcFrameRate; /* for raw frame rate control */
     HI_S32  s32DstFrameRate;   
 }VI_SNAP_USER_ATTR_S;

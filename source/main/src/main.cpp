@@ -10,6 +10,7 @@
 #include "socket.hpp"
 #include "ddc.h"
 #include "mem.h"
+#include "mppive.h"
 
 //this program is designed to run in the linux system, 
 //try to be compatible with 32 bit and 64 bit differences, 
@@ -44,6 +45,8 @@ int main(int argc, char *argv[])
     //printf("\33[31m");
 	//printf("===========test==========\n"); 
 	//printf("\33[0m ");
+
+	return mpp_test();
 
     return mem_test();
 

@@ -20,6 +20,7 @@
 
 #include "hi_type.h"
 #include "hi_comm_3a.h"
+#include "hi_comm_isp.h"
 
 #ifdef __cplusplus
 #if __cplusplus
@@ -57,6 +58,7 @@ typedef struct hiISP_SNS_OBJ_S
     HI_S32  (*pfnSetInit)(ISP_DEV IspDev, ISP_INIT_ATTR_S *pstInitAttr);
 } ISP_SNS_OBJ_S;
 
+extern ISP_SNS_OBJ_S stSnsOs05aObj;
 extern ISP_SNS_OBJ_S stSnsImx117Obj;
 extern ISP_SNS_OBJ_S stSnsImx326Obj;
 extern ISP_SNS_OBJ_S stSnsImx326SlaveObj;

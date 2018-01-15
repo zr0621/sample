@@ -11,6 +11,7 @@ INCLUDE_DIRECTORIES(${TOP_DIR}/source/thread/inc)
 INCLUDE_DIRECTORIES(${TOP_DIR}/source/cfgfile/inc)
 INCLUDE_DIRECTORIES(${TOP_DIR}/source/socket/inc)
 INCLUDE_DIRECTORIES(${TOP_DIR}/source/ddc/inc)
+INCLUDE_DIRECTORIES(${TOP_DIR}/source/mppive/inc)
 
 LINK_DIRECTORIES(${TOP_DIR}/install/lib/${CROSS_COMPILE})
 
@@ -21,6 +22,7 @@ FILE(GLOB HISI_LIBS ${TOP_DIR}/thirdparty/hisisdk/${PLATFORM}/lib/*.a)
 SET(MODULE_LIBRARY
 				socket
 				ddc
+				mppive
 				thread
 				cfgfile
 				dsa

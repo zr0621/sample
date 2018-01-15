@@ -40,29 +40,12 @@ typedef struct {
 
 typedef enum hiACODEC_IOCTL_E {
 	IOC_NR_SOFT_RESET_CTRL = 0x0,
-	/******************************************************************************************
-	The input volume range is [-113, +86]. Both the analog gain and digital gain are adjusted.
-	A larger value indicates higher volume. 
-	For example, the value 86 indicates the maximum volume of 86 dB, 
-	and the value -113 indicates the minimum volume (muted status). 
-	The volume adjustment takes effect simultaneously in the audio-left and audio-right channels. 
-	The recommended volume range is [-16, +56]. 
-	Within this range, the noises are lowest because only the analog gain is adjusted, 
-	and the voice quality can be guaranteed.
-	*******************************************************************************************/
+
 	IOC_NR_SET_INPUT_VOL ,
-	/*******************************************************************************************
-	The output volume range is [-121, +6]. A larger value indicates higher volume. 
-	For example, the value 6 indicates the maximum volume of 6 dB, 
-	and the value -121 indicates the minimum volume (muted status). 
-	The volume adjustment takes effect simultaneously in the audio-left and audio-right channels. 
-	The digital gain is adjusted by calling this interface. 
-	It is recommended that a small value is assigned to avoid noises.
-	*******************************************************************************************/
 	IOC_NR_SET_OUTPUT_VOL,
 	IOC_NR_GET_INPUT_VOL,
 	IOC_NR_GET_OUTPUT_VOL,
-	/***********************/
+
 	IOC_NR_SET_I2S1_FS,
 	IOC_NR_SET_MIXER_MIC,
 	IOC_NR_SEL_DAC_CLK,

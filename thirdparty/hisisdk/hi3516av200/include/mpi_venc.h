@@ -40,6 +40,8 @@ HI_S32 HI_MPI_VENC_StartRecvPicEx(VENC_CHN VeChn, VENC_RECV_PIC_PARAM_S *pstRecv
 HI_S32 HI_MPI_VENC_StopRecvPic(VENC_CHN VeChn);
 
 HI_S32 HI_MPI_VENC_Query(VENC_CHN VeChn, VENC_CHN_STAT_S *pstStat);
+HI_S32 HI_MPI_VENC_Query_Ex(VENC_CHN VeChn,VENC_CHN_STAT_EX_S * pstStatEx);
+
 
 HI_S32 HI_MPI_VENC_SetChnAttr(VENC_CHN VeChn, const VENC_CHN_ATTR_S *pstAttr);
 HI_S32 HI_MPI_VENC_GetChnAttr(VENC_CHN VeChn, VENC_CHN_ATTR_S *pstAttr);
@@ -65,6 +67,9 @@ HI_S32 HI_MPI_VENC_CloseFd(VENC_CHN VeChn);
 
 HI_S32 HI_MPI_VENC_SetRoiCfg(VENC_CHN VeChn, VENC_ROI_CFG_S *pstVencRoiCfg);
 HI_S32 HI_MPI_VENC_GetRoiCfg(VENC_CHN VeChn, HI_U32 u32Index, VENC_ROI_CFG_S *pstVencRoiCfg);
+
+HI_S32 HI_MPI_VENC_SetRoiCfgEx(VENC_CHN VeChn, VENC_ROI_CFG_EX_S *pstVencRoiCfg);
+HI_S32 HI_MPI_VENC_GetRoiCfgEx(VENC_CHN VeChn, HI_U32 u32Index, VENC_ROI_CFG_EX_S *pstVencRoiCfg);
 
 HI_S32 HI_MPI_VENC_SetRoiBgFrameRate(VENC_CHN VeChn, const VENC_ROIBG_FRAME_RATE_S *pstRoiBgFrmRate);
 HI_S32 HI_MPI_VENC_GetRoiBgFrameRate(VENC_CHN VeChn, VENC_ROIBG_FRAME_RATE_S *pstRoiBgFrmRate);
@@ -176,6 +181,8 @@ HI_S32 HI_MPI_VENC_GetVencAdvancedParam(VENC_CHN VeChn,VENC_PARAM_ADVANCED_S *ps
 
 HI_S32 HI_MPI_VENC_EnableAdvSmartP(VENC_CHN VeChn, HI_BOOL bEnableAdvSmartP);
 
+HI_S32 HI_MPI_VENC_SetSceneMode(VENC_CHN VeChn, VENC_SCENE_MODE_E enSceneMode);
+HI_S32 HI_MPI_VENC_GetSceneMode(VENC_CHN VeChn, VENC_SCENE_MODE_E *penSceneMode);
 
 #ifdef __cplusplus
 #if __cplusplus

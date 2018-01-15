@@ -80,6 +80,9 @@ typedef struct hiAE_DBG_STATUS_S
     HI_S32  s32HistOriAverage;
     HI_S32  s32LumaOffset;
     HI_U32  u32Iso;
+	HI_U32  u32ExpRatio;
+	HI_U32  u32OverExpRatio;
+	HI_U32  u32OverExpRatioFilter;
 }AE_DBG_STATUS_S;
 
 /************************** sensor's interface to ae *********************/

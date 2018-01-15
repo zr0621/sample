@@ -231,6 +231,10 @@ typedef struct hiFPS_CTRL_S
 __inline static HI_VOID InitFps(FPS_CTRL_S *pFrmCtrl, HI_U32 u32FullFps,
                                 HI_U32 u32TagFps)
 {
+    if(HI_NULL == pFrmCtrl)
+    {
+        return;
+    }
     pFrmCtrl->u32Ffps   = u32FullFps;
     pFrmCtrl->u32Tfps   = u32TagFps;
     pFrmCtrl->u32FrmKey = 0;
@@ -239,6 +243,11 @@ __inline static HI_VOID InitFps(FPS_CTRL_S *pFrmCtrl, HI_U32 u32FullFps,
 __inline static HI_BOOL FpsControl(FPS_CTRL_S *pFrmCtrl)
 {
     HI_BOOL   bReturn       = HI_FALSE;
+    
+    if(HI_NULL == pFrmCtrl)
+    {
+        return HI_FALSE;
+    }
 
     pFrmCtrl->u32FrmKey += pFrmCtrl->u32Tfps;
     if (pFrmCtrl->u32FrmKey >= pFrmCtrl->u32Ffps)

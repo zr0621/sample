@@ -86,6 +86,7 @@ typedef enum hiPIC_SIZE_E
     PIC_2304x1296, /* 3M:2304 * 1296 */
     PIC_2592x1520, /* 4M:2592 * 1520 */
     PIC_5M,        /* 2592 * 1944 */
+    PIC_2688x1944,/* 2688 * 1944 */
     PIC_6M,        /* 3072 * 2160 */
     PIC_UHD4K,     /* 3840 * 2160 */
     PIC_3Kx3K,      /* 3000 * 3000 */
@@ -252,6 +253,16 @@ typedef struct hiJPEG_DCF_S
 
 } JPEG_DCF_S;
 
+
+
+typedef struct hiUSER_SUPPLEMENT_INFO_S
+{
+    HI_U32          u32PhyAddr;                                             /*The physical address from user*/
+    HI_VOID*        pVirAddr;                                               /*The virtual address from user*/
+    HI_U32          u32Size;                                                /*size of user memory.                                                                         If the numerator of the recorded value is 0, this indicates that digital zoom was not used.*/
+} USER_SUPPLEMENT_INFO_S;
+
+
 #define WDR_FRAME_NUM_MAX 4
 typedef struct hiFRAME_SUPPLEMENT_INFO_S
 {
@@ -259,6 +270,7 @@ typedef struct hiFRAME_SUPPLEMENT_INFO_S
     HI_U32      u32ExposureTime[WDR_FRAME_NUM_MAX];                                    /*Exposure time (reciprocal of shutter speed).*/
     HI_U32      u32IspDgain[WDR_FRAME_NUM_MAX];
     HI_U32      u32IspNrStrength[WDR_FRAME_NUM_MAX];
+    USER_SUPPLEMENT_INFO_S stUserSupplementInfo;
     HI_U32      u32FNumber;                                         /*The actual F-number (F-stop) of lens when the image was taken*/
     HI_U32      u32SensorID;
     HI_U32      u32SensorMode;

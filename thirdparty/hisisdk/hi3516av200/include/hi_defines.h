@@ -36,9 +36,29 @@ extern "C"{
     #define HICHIP HI3519_V101
 #endif
 
-
-#define CHIP_NAME    "Hi3519V101"
-#define MPP_VER_PRIX "_MPP_V"
+#if HICHIP==HI3516A_V100
+    #define CHIP_NAME    "Hi3516A"
+    #define MPP_VER_PRIX "_MPP_V"
+#elif HICHIP==HI3516A_V200
+    #define CHIP_NAME    "Hi3516AV200"
+    #define MPP_VER_PRIX "_MPP_V"
+#elif HICHIP==HI3518E_V200
+    #define CHIP_NAME    "Hi3518EV200"
+    #define MPP_VER_PRIX "_MPP_V"
+#elif HICHIP==HI3519_V100
+    #define CHIP_NAME    "Hi3519V100"
+    #define MPP_VER_PRIX "_MPP_V"
+#elif HICHIP==HI3519_V101
+    #define CHIP_NAME    "Hi3519V101"
+    #define MPP_VER_PRIX "_MPP_V"
+#elif HICHIP==HI3559_V100
+    #define CHIP_NAME    "Hi3559"
+    #define MPP_VER_PRIX "_MPP_V"
+#elif HICHIP==HI35xx_Vxxx
+    #error HuHu, I am an dummy chip
+#else
+    #error HICHIP define may be error
+#endif
 
 #define VEDU_MAX_CNT 2                 /*max vedu number,3531/3521(2), 3521(1)*/       
 
@@ -209,7 +229,7 @@ extern "C"{
 #define AO_DEV_MIN_NUM          0
 #define AO_DEV_MAX_NUM          1
 #define AIO_MAX_NUM             1
-#define AIO_MAX_CHN_NUM         16
+#define AIO_MAX_CHN_NUM         2
 #define AENC_MAX_CHN_NUM        32
 #define ADEC_MAX_CHN_NUM        32
 

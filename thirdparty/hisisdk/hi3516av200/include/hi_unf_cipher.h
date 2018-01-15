@@ -199,14 +199,14 @@ typedef struct
 typedef struct
 {
     HI_UNF_CIPHER_RSA_ENC_SCHEME_E enScheme;   /** RSA encryption scheme*/
-    HI_UNF_CIPHER_RSA_PUB_KEY_S stPubKey;      /** RSA private key struct */
+    HI_UNF_CIPHER_RSA_PUB_KEY_S stPubKey;      /** RSA public key struct */
 }HI_UNF_CIPHER_RSA_PUB_ENC_S;
 
 /** RSA private key decryption struct input */
 typedef struct
 {
     HI_UNF_CIPHER_RSA_ENC_SCHEME_E enScheme; /** RSA encryption scheme */
-    HI_UNF_CIPHER_RSA_PRI_KEY_S stPriKey;    /** RSA public key struct */
+    HI_UNF_CIPHER_RSA_PRI_KEY_S stPriKey;    /** RSA private key struct */
     HI_UNF_CIPHER_KEY_SRC_E enKeySrc;
 }HI_UNF_CIPHER_RSA_PRI_ENC_S;
 
